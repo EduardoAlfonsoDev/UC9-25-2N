@@ -619,7 +619,7 @@ public class FrmFornecedor extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cmbUfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbUfActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_cmbUfActionPerformed
 
     private void btnLocalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLocalizarActionPerformed
@@ -732,36 +732,81 @@ public class FrmFornecedor extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnAlterarActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
-        if (!SessaoUsuario.isMaster()){
-            JOptionPane.showMessageDialog(this,"Você não possui permissão para excluir fornecedores.");
-            return;
+             if (
+            !SessaoUsuario.isMaster()
+    ) {
+
+        JOptionPane.showMessageDialog(
+                this,
+                "Você não possui permissão para excluir fornecedores."
+        );
+
+        return;
+    }
+
+    if (
+            idFornecedorSelecionado == 0
+    ) {
+
+        JOptionPane.showMessageDialog(
+                this,
+                "Localize e carregue um fornecedor antes de excluir."
+        );
+
+        return;
+    }
+
+    int resposta =
+            JOptionPane.showConfirmDialog(
+                    this,
+                    "Deseja realmente excluir este fornecedor?",
+                    "Excluir Fornecedor",
+                    JOptionPane.YES_NO_OPTION
+            );
+
+    if (
+            resposta
+            != JOptionPane.YES_OPTION
+    ) {
+
+        return;
+    }
+
+    try {
+
+        boolean excluido =
+                fornecedorDAO.excluir(
+                        idFornecedorSelecionado
+                );
+
+        if (excluido) {
+
+            JOptionPane.showMessageDialog(
+                    this,
+                    "Fornecedor excluído com sucesso."
+            );
+
+            limparCampos();
+
+            listarFornecedores();
+
+        } else {
+
+            JOptionPane.showMessageDialog(
+                    this,
+                    "Fornecedor não encontrado."
+            );
         }
-        
-        if (idFornecedorSelecionado == 0){
-            JOptionPane.showMessageDialog(this, "Localize e carregue um fornecedor antes de excluir.");
-            return;
-        }
-        
-        int resposta = JOptionPane.showConfirmDialog(this, "Deseja realmente excluir este fornecedor?", "Excluir Fornecedor", JOptionPane.YES_NO_OPTION);
-        
-        if (resposta != JOptionPane.YES_OPTION){
-            return;
-        }
-        
-        try {
-            boolean excluido = fornecedorDAO.excluir(idFornecedorSelecionado);
-            
-            if (excluido) {
-                JOptionPane.showMessageDialog(this, "Fornecedor excluído com sucesso.");
-                
-                limparCampos();
-                listarFornecedores();
-            } else {
-                JOptionPane.showMessageDialog(this, "Fornecedor não encontrado.");
-            }
-        } catch (Exception erro) {
-            JOptionPane.showMessageDialog(this, "Não foi possível excluir o fornecedor\n Ele pode possuir compras vinculadas." + erro.getMessage());
-        }
+
+    } catch (Exception erro) {
+
+        JOptionPane.showMessageDialog(
+                this,
+                "Não foi possível excluir o fornecedor."
+                + "Ele pode possuir compras vinculadas."
+                + erro.getMessage()
+        );
+    }
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed

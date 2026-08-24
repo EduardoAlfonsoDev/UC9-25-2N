@@ -59,11 +59,22 @@ public class FornecedorDAO {
     
     public boolean alterar(Fornecedor fornecedor) {
         
-        String sql = """
-                     UPDATE fornecedor
-                     SET razao_social = ?, nome_fantasia = ?, cnpj = ?, telefone = ?, email = ?, endereco = ?, numero = ?, complemento = ?, bairro = ?, cidade = 0, uf = ?, cep = ?, ativo = ?
-                     WHERE id_fornecedor = ?
-                     """;
+        String sql = 
+             "UPDATE fornecedor SET "
+            + "razao_social = ?, "
+            + "nome_fantasia = ?, "
+            + "cnpj = ?, "
+            + "telefone = ?, "
+            + "email = ?, "
+            + "endereco = ?, "
+            + "numero = ?, "
+            + "complemento = ?, "
+            + "bairro = ?, "
+            + "cidade = ?, "
+            + "uf = ?, "
+            + "cep = ?, "
+            + "ativo = ? "
+            + "WHERE id_fornecedor = ?";
         
         try {
             Connection conexao = Conexao.conectar();
@@ -92,10 +103,9 @@ public class FornecedorDAO {
     
     public boolean excluir(long idFornecedor) {
         
-        String sql = """
-                     DELETE FROM fornecedor
-                     WHERE id_fornededor = ?
-                     """;
+        String sql = 
+                    "DELETE FROM fornecedor "
+                    + "WHERE id_fornecedor = ?";
         
         try {
             Connection conexao = Conexao.conectar();

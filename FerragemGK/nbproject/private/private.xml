@@ -5,8 +5,10 @@
         <group>
             <file>file:/C:/Users/edual/OneDrive/Desktop/FerragemGK/src/view/FrmPrincipal.java</file>
             <file>file:/C:/Users/edual/OneDrive/Desktop/FerragemGK/src/view/FrmUsuario.java</file>
-            <file>file:/C:/Users/edual/OneDrive/Desktop/FerragemGK/src/model/Usuario.java</file>
-            <file>file:/C:/Users/edual/OneDrive/Desktop/FerragemGK/src/dao/UsuarioDAO.java</file>
+            <file>file:/C:/Users/edual/OneDrive/Desktop/FerragemGK/src/view/FrmProduto.java</file>
+            <file>file:/C:/Users/edual/OneDrive/Desktop/FerragemGK/src/view/FrmFornecedor.java</file>
+            <file>file:/C:/Users/edual/OneDrive/Desktop/FerragemGK/src/model/Fornecedor.java</file>
+            <file>file:/C:/Users/edual/OneDrive/Desktop/FerragemGK/src/dao/FornecedorDAO.java</file>
         </group>
     </open-files>
 </project-private>

@@ -256,8 +256,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         if (!SessaoUsuario.isMaster()) {
             JOptionPane.showMessageDialog(this, "Acesso permitido somente para usuário MASTER");
             return;
-        }
-        
+        }        
         abrirTela(new FrmUsuario());
     }//GEN-LAST:event_mnuUsuariosActionPerformed
 

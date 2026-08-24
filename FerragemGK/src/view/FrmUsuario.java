@@ -23,9 +23,9 @@ public class FrmUsuario extends javax.swing.JInternalFrame {
    
     public FrmUsuario() {
         initComponents();
-        //configurarTela();
-        //listarUsuarios();
-        //limparCampos();
+        configurarTela();
+        listarUsuarios();
+        limparCampos();
     }
     
     private void configurarTela() {
@@ -77,6 +77,8 @@ public class FrmUsuario extends javax.swing.JInternalFrame {
         }
     };
 }
+    
+   
     
     private void preencherTabela(
         List<Usuario> usuarios
